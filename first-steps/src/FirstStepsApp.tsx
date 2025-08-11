@@ -20,9 +20,6 @@ export function FirstStepsApp() {
                     <ItemCounter key={productName} name={productName} quantity={quantity} />
                 ))
             }
-            <ItemCounter name="Nintendo" quantity={10} />
-            <ItemCounter name="Xbox" quantity={10} />
-            <ItemCounter name="Play Station" quantity={11} />
         </>
 
     )

@@ -1,29 +1,30 @@
+import { useState } from "react";
+import styles from './ItemCounter.module.css'
+
 interface Props {
     name: string;
-    quantity?: number; // No es obligatorio
+    quantity: number;
 }
-
-const handleClickIncrement = () => {
-    console.log('click increment')
-}
-
-const handleClickDecrement = () => {
-    console.log('click decrement')
-}
-
 
 export const ItemCounter = ({ name, quantity }: Props) => {
+
+    const [count, setCount] = useState(quantity)
+
+    const handleClickIncrement = () => {
+        setCount(count + 1)
+    }
+
+    const handleClickDecrement = () => {
+        if (count == 0) return
+        setCount(count - 1)
+    }
+
     return (
-        <section style={{
-            display: 'flex',
-            alignItems: 'center',
-            gap: 10
-        }}>
-            <span style={{
-                minWidth: 100
-            }}>{name}</span>
+        <section className={styles['item-row']} >
+
+            <span className={styles['itemName']}>{name}</span>
             <button onClick={handleClickIncrement}>+1</button>
-            <span>{quantity}</span>
+            <span>{count}</span>
             <button onClick={handleClickDecrement}>-1</button>
 
         </section>
