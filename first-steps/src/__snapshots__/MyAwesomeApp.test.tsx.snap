@@ -1,0 +1,23 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`My Awesome App > should match snapshot 1`] = `
+<div>
+  <div>
+    <h1
+      data-testid="fist-name-title"
+    >
+      Samuel
+    </h1>
+    <h3
+      style="background-color: rgb(250, 250, 250); border-radius: 20px; padding: 10px; margin-top: 30px;"
+    >
+      Jimenez
+    </h3>
+    <p
+      class="label-salduo"
+    >
+      Hola mundo
+    </p>
+  </div>
+</div>
+`;

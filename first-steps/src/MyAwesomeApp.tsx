@@ -12,9 +12,10 @@ const myStyles: CSSProperties = {
 export function MyAwesomeApp() {
 
     return (
-        <>
-            <h1>{firstName}</h1>
+        <div>
+            <h1 data-testid="fist-name-title">{firstName}</h1>
             <h3 style={myStyles}>{lastName}</h3>
-        </>
+            <p className="label-salduo">Hola mundo</p>
+        </div>
     )
 }
