@@ -22,7 +22,8 @@ export const ItemCounter = ({ name, quantity }: Props) => {
     return (
         <section className={styles['item-row']} >
 
-            <span className={styles['itemName']}>{name}</span>
+            <span className={styles['itemName']}
+                style={{ color: count == 0 ? 'red' : "black" }}>{name}</span>
             <button onClick={handleClickIncrement}>+1</button>
             <span>{count}</span>
             <button onClick={handleClickDecrement}>-1</button>
