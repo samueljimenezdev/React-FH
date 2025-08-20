@@ -4,15 +4,17 @@ import { CustomHeader } from './shared/components/CustomHeader'
 import { SearchBar } from './shared/components/SearchBar'
 import { PreviousSearches } from './shared/components/PreviousSearches'
 import { GifList } from './shared/components/GifList'
+import { getGifByQuery } from './gifs/actions/get-gifs-by-query.action'
 
 export const GifsApp = () => {
     const [previousTerms, setpreviousTerms] = useState(['Naruto'])
+    const [gifs, setGifs] = useState([...mockGifs]);
 
     const handleTermClicked = (term: string) => {
         console.log(`Term clicked: ${term}`);
     }
 
-    const handleSearch = (term: string) => {
+    const handleSearch = async (term: string) => {
 
         if (!term) return;
         if (term.trim().length === 0) return
@@ -27,6 +29,9 @@ export const GifsApp = () => {
             }
             return [term, ...prevTerms]; // Add new term to the beginning
         });
+
+        const gifs = await getGifByQuery(term);
+        setGifs(gifs);
     }
 
     return (
@@ -41,7 +46,7 @@ export const GifsApp = () => {
             <PreviousSearches searches={previousTerms} onLabelCicked={handleTermClicked} />
 
             {/* Gifs */}
-            <GifList gifs={mockGifs} />
+            <GifList gifs={gifs} />
         </>
     )
 }
