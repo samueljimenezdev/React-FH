@@ -5,23 +5,23 @@ export interface GiphyResponse {
 }
 
 export interface GiphyGif {
-    type: Type;
+    type: string;
     id: string;
     url: string;
     slug: string;
     bitly_gif_url: string;
     bitly_url: string;
     embed_url: string;
-    username: Username;
+    username: string;
     source: string;
     title: string;
-    rating: Rating;
+    rating: string;
     content_url: string;
     source_tld: string;
     source_post_url: string;
     is_sticker: number;
     import_datetime: Date;
-    trending_datetime: Date | TrendingDatetimeEnum;
+    trending_datetime: Date;
     images: Images;
     analytics_response_payload: string;
     analytics: Analytics;
@@ -100,51 +100,20 @@ export interface Looping {
     mp4: string;
 }
 
-export enum Rating {
-    G = "g",
-    PG = "pg",
-    R = "r",
-}
-
-export enum TrendingDatetimeEnum {
-    The00000000000000 = "0000-00-00 00:00:00",
-}
-
-export enum Type {
-    GIF = "gif",
-}
 
 export interface User {
     avatar_url: string;
     banner_image: string;
     banner_url: string;
     profile_url: string;
-    username: Username;
-    display_name: DisplayName;
-    description: Description;
+    username: string;
+    display_name: string;
+    description: string;
     instagram_url: string;
     website_url: string;
     is_verified: boolean;
 }
 
-export enum Description {
-    AnimeGaming = "Anime & Gaming",
-    Empty = "",
-    MakingCosplayingAndAllAroundNerdinessAwesome = "Making Cosplaying and all around Nerdiness awesome",
-}
-
-export enum DisplayName {
-    Empty = "",
-    Mannyjammy = "mannyjammy",
-    Mobius = "Mobius",
-}
-
-export enum Username {
-    Empty = "",
-    Mannyjammy = "mannyjammy",
-    Mbss = "Mbss",
-    Netflixlat = "netflixlat",
-}
 
 export interface Meta {
     status: number;
