@@ -1,17 +1,24 @@
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import { getGifByQuery } from '../actions/get-gifs-by-query.action'
 import { mockGifs } from '../../mock-data/figs.mock'
+import type { Gif } from '../interfaces/giph.interface'
 
 export const useGifs = () => {
     const [previousTerms, setpreviousTerms] = useState(['Naruto'])
     const [gifs, setGifs] = useState([...mockGifs]);
+    const gifsCache = useRef<Record<string, Gif[]>>({});
+
 
     const handleTermClicked = async (term: string) => {
-        const gifs = await getGifByQuery(term);
-        setGifs(gifs);
+        handleSearch(term);
     }
 
     const handleSearch = async (term: string) => {
+
+        if (gifsCache.current[term]) {
+            setGifs(gifsCache.current[term]);
+            return;
+        }
 
         if (!term) return;
         if (term.trim().length === 0) return
@@ -29,6 +36,8 @@ export const useGifs = () => {
 
         const gifs = await getGifByQuery(term);
         setGifs(gifs);
+
+        gifsCache.current[term] = gifs;
     }
 
     return {
