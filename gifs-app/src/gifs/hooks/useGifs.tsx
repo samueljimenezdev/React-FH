@@ -4,7 +4,7 @@ import { mockGifs } from '../../mock-data/figs.mock'
 import type { Gif } from '../interfaces/giph.interface'
 
 export const useGifs = () => {
-    const [previousTerms, setpreviousTerms] = useState(['Naruto'])
+    const [previousTerms, setpreviousTerms] = useState(['naruto'])
     const [gifs, setGifs] = useState([...mockGifs]);
     const gifsCache = useRef<Record<string, Gif[]>>({});
 
