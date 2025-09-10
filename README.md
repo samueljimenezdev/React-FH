@@ -10,6 +10,7 @@ Actualmente, el repositorio alberga los siguientes proyectos:
 
 - [first-steps](./first-steps/README.md): Primeros pasos con React, ejemplos básicos y fundamentos.
 - [gifs-app](./gifs-app/README.md): Aplicación para buscar y mostrar GIFs utilizando la API de Giphy.
+- [hooks-app](./hooks-app/README.md): Aplicación para entender algunos hooks
 
 Cada proyecto cuenta con su propio README donde se detallan instrucciones de uso, dependencias y características específicas.
 
