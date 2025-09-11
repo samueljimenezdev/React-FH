@@ -23,3 +23,6 @@ Este proyecto es parte del curso de React de Fernando Herrera. El objetivo es pr
 - `npm run build`: Compila el proyecto para producción.
 - `npm run lint`: Ejecuta ESLint para analizar el código.
 - `npm run preview`: Previsualiza el build de producción.
+
+
+Se usa https://ui.shadcn.com/
