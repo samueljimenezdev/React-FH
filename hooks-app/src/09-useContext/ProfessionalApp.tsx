@@ -1,11 +1,15 @@
 import React from 'react'
 import { RouterProvider } from 'react-router'
 import { router } from './router/app.router'
+import { UserContextProvider } from './context/UserContext'
 
 export const ProfessionalApp = () => {
     return (
-        <div className='bg-gradient'>
-            <RouterProvider router={router} />
-        </div>
+        <UserContextProvider>
+            <div className='bg-gradient'>
+                <RouterProvider router={router} />
+            </div>
+        </UserContextProvider>
+
     )
 }
