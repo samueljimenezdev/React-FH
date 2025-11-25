@@ -1,16 +1,22 @@
 import { createBrowserRouter } from "react-router";
 import { HomePage } from "@/heroes/pages/home/HomePage";
-import { HeroPage } from "@/heroes/pages/hero/HeroPage";
-import { SearchPage } from "@/heroes/pages/search/SearchPage";
-import { AdminPages } from "@/admin/pages/AdminPages";
 import { HeroesLayout } from "@/heroes/layouts/HeroesLayout";
-import { AdminLayout } from "@/admin/layouts/AdminLayout";
+import { lazy } from "react";
 
 /**
  * App Router
  * Defines the main routes for the application, including layouts and nested routes.
  * Nested routes are used to render specific pages within their respective layouts.
  */
+
+/**
+ * Lazy loaded components 
+ */
+const SearchPage = lazy(() => import('@/heroes/pages/search/SearchPage').then(module => ({ default: module.SearchPage })));
+const AdminLayout = lazy(() => import('@/admin/layouts/AdminLayout').then(module => ({ default: module.AdminLayout })));
+const AdminPages = lazy(() => import('@/admin/pages/AdminPages').then(module => ({ default: module.AdminPages })));
+const HeroPage = lazy(() => import('@/heroes/pages/hero/HeroPage').then(module => ({ default: module.HeroPage })));
+
 export const appRouter = createBrowserRouter([
     {
         path: '/',
