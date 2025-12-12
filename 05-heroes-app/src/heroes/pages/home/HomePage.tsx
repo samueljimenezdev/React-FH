@@ -15,6 +15,7 @@ import { HeroGrid } from "@/heroes/components/HeroGrid"
 import { useState } from "react"
 import { CustomPagination } from "@/components/custom/CustomPagination"
 import { CustomMenu } from "@/components/custom/CustomMenu"
+import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs"
 
 type activeTabType = "all" | "favorites" | "heroes" | "villains";
 
@@ -26,6 +27,12 @@ export const HomePage = () => {
             {/* Header */}
             <CustomJumbotron title="Superhero Universe" subtitle="Discover, explore, and manage your favorite superheroes and villains" />
 
+            <CustomBreadcrumbs
+                currentPage="Home"
+                breadcrumbs={[
+                    { label: 'Home', to: '/home' }
+                ]}
+            />
             {/* Stats Dashboard */}
             <HeroStats />
 
