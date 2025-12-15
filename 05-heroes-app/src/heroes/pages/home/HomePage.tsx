@@ -1,10 +1,6 @@
 import {
-    Heart,
-    ChevronLeft,
-    ChevronRight,
-    MoreHorizontal,
+    Heart
 } from "lucide-react"
-import { Button } from "@/components/ui/button"
 
 
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
@@ -14,14 +10,29 @@ import { SearchControls } from "./ui/SearchControls"
 import { HeroGrid } from "@/heroes/components/HeroGrid"
 import { useState } from "react"
 import { CustomPagination } from "@/components/custom/CustomPagination"
-import { CustomMenu } from "@/components/custom/CustomMenu"
 import { CustomBreadcrumbs } from "@/components/custom/CustomBreadcrumbs"
+import { getHeroesByPageAction } from "@/heroes/actions/get-heroes-by-page.action"
+import { useQuery } from "@tanstack/react-query"
 
 type activeTabType = "all" | "favorites" | "heroes" | "villains";
 
 export const HomePage = () => {
 
     const [activeTab, setActiveTab] = useState<activeTabType>("all")
+
+
+
+    // useEffect(() => {
+    //     getHeroesByPage().then(data => {
+
+    //     })
+    // }, [])
+
+    const { data } = useQuery({
+        queryKey: ['heroes'], // Unique key for the query to save in cache
+        queryFn: () => getHeroesByPageAction() // Function that returns a promise with the data
+    })
+
     return (
         <>
             {/* Header */}
