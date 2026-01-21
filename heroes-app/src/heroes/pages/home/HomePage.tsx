@@ -20,17 +20,10 @@ export const HomePage = () => {
 
     const [activeTab, setActiveTab] = useState<activeTabType>("all")
 
-
-
-    // useEffect(() => {
-    //     getHeroesByPage().then(data => {
-
-    //     })
-    // }, [])
-
-    const { data } = useQuery({
+    const { data: heroesResponse } = useQuery({
         queryKey: ['heroes'], // Unique key for the query to save in cache
-        queryFn: () => getHeroesByPageAction() // Function that returns a promise with the data
+        queryFn: () => getHeroesByPageAction(), // Function that returns a promise with the data
+        staleTime: 5 * 60 * 1000, // Data is considered fresh for 5 minutes
     })
 
     return (
@@ -65,22 +58,22 @@ export const HomePage = () => {
 
                 <TabsContent value="all">
                     {/* Hero Grid with all heroes */}
-                    <HeroGrid />
+                    <HeroGrid heroes={heroesResponse?.heroes ?? []} />
                 </TabsContent>
 
                 <TabsContent value="favorites">
                     {/* Hero Grid with favorite heroes */}
-                    <HeroGrid />
+                    <HeroGrid heroes={heroesResponse?.heroes ?? []} />
                 </TabsContent>
 
                 <TabsContent value="heroes">
                     {/* Hero Grid with heroes */}
-                    <HeroGrid />
+                    <HeroGrid heroes={heroesResponse?.heroes ?? []} />
                 </TabsContent>
 
                 <TabsContent value="villains">
                     {/* Hero Grid with villains */}
-                    <HeroGrid />
+                    <HeroGrid heroes={heroesResponse?.heroes ?? []} />
                 </TabsContent>
             </Tabs>
 
